@@ -117,7 +117,7 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 <a
-                  href={BRAND_INFO.whatsappUrl}
+                  href={`${BRAND_INFO.whatsappUrl}?text=${encodeURIComponent('Hello Sakura Coffee! 🌸 I would like to inquire about your specialty drinks and ordering in Lahore.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   id="contact-whatsapp-btn"

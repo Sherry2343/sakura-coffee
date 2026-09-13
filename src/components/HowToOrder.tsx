@@ -112,7 +112,7 @@ export const HowToOrder: React.FC = () => {
             </p>
           </div>
           <a
-            href={BRAND_INFO.whatsappUrl}
+            href={`${BRAND_INFO.whatsappUrl}?text=${encodeURIComponent('Hello Sakura Coffee! 🌸 I would like to inquire about coffee catering or placing an order in Lahore.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs uppercase tracking-wider font-semibold rounded-full shadow-xs hover:shadow transition-all duration-200 flex-shrink-0"

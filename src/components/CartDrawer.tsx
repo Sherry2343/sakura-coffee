@@ -364,14 +364,14 @@ export const CartDrawer: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* Submit Button */}
+                  {/* Checkout Submit Button */}
                   <button
                     type="submit"
                     id="submit-order-review-btn"
-                    className="w-full py-3 px-6 bg-[#5B3A29] hover:bg-[#2B1B17] text-[#FFF7EE] font-semibold text-xs uppercase tracking-widest rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 px-6 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-semibold text-xs uppercase tracking-widest rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>Review Order & WhatsApp</span>
-                    <ArrowRight className="w-4 h-4 text-[#F7C8D8]" />
+                    <span>Send Order to WhatsApp 🌸</span>
+                    <ArrowRight className="w-4 h-4 text-white" />
                   </button>
                 </form>
               </>

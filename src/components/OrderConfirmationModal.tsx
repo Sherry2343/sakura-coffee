@@ -5,9 +5,8 @@ import {
   Copy,
   Check,
   AlertCircle,
-  ShoppingBag,
-  Send,
   ExternalLink,
+  ArrowLeft,
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { BRAND_INFO } from '../data/menuData';
@@ -16,11 +15,13 @@ export const OrderConfirmationModal: React.FC = () => {
   const {
     isReviewModalOpen,
     closeReviewModal,
+    openCart,
     cartItems,
     customerDetails,
     subtotal,
     generateWhatsAppMessage,
     getWhatsAppUrl,
+    getWhatsAppWebUrl,
   } = useCart();
 
   const [copied, setCopied] = useState(false);
@@ -30,6 +31,7 @@ export const OrderConfirmationModal: React.FC = () => {
 
   const rawMessage = generateWhatsAppMessage();
   const whatsappUrl = getWhatsAppUrl();
+  const whatsappWebUrl = getWhatsAppWebUrl();
 
   const handleCopyDetails = async () => {
     try {
@@ -49,9 +51,9 @@ export const OrderConfirmationModal: React.FC = () => {
     }
   };
 
-  const handleContinueToWhatsApp = () => {
-    setHasClickedWhatsApp(true);
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  const handleBackToCart = () => {
+    closeReviewModal();
+    openCart();
   };
 
   return (
@@ -94,16 +96,12 @@ export const OrderConfirmationModal: React.FC = () => {
         {/* Modal Body */}
         <div className="p-6 space-y-5 max-h-[75vh] overflow-y-auto">
           {/* Important Notice Banner */}
-          <div className="bg-[#FCE8ED] border border-[#F7C8D8] rounded-2xl p-4 flex items-start gap-3">
+          <div className="bg-[#FCE8ED] border-2 border-[#F7C8D8] rounded-2xl p-4 flex items-start gap-3">
             <AlertCircle className="w-5 h-5 text-[#5B3A29] flex-shrink-0 mt-0.5" />
             <div className="space-y-1 text-xs text-[#5B3A29]">
-              <p className="font-bold text-sm">WhatsApp Confirmation Required</p>
-              <p className="leading-relaxed">
-                “Your order will be sent to our WhatsApp Business for confirmation.
-                Your order is not confirmed until our team replies.”
-              </p>
-              <p className="text-[11px] text-[#5B3A29]/80 italic">
-                * Note: No payment has been taken. You will verify preparation time directly with our Lahore baristas.
+              <p className="font-bold text-sm text-[#2B1B17]">Order Notice</p>
+              <p className="leading-relaxed font-medium">
+                Your order details are ready. WhatsApp will open with your order message. Please press Send, then wait for Sakura Coffee to confirm your order.
               </p>
             </div>
           </div>
@@ -198,42 +196,84 @@ export const OrderConfirmationModal: React.FC = () => {
           </div>
 
           {/* Action buttons */}
-          <div className="space-y-2.5 pt-2">
-            {/* Primary Action Button: Send Order to WhatsApp */}
-            <button
-              onClick={handleContinueToWhatsApp}
+          <div className="space-y-3 pt-2">
+            {/* Primary Action Button: Send Order to WhatsApp 🌸 */}
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                setHasClickedWhatsApp(true);
+                handleCopyDetails();
+              }}
               id="send-order-whatsapp-btn"
-              className="w-full py-3.5 px-6 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-semibold text-sm rounded-full shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-6 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-sm sm:text-base rounded-full shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer no-underline text-center"
             >
               <MessageCircle className="w-5 h-5 fill-white text-transparent" />
-              <span>Send Order to WhatsApp</span>
+              <span>Send Order to WhatsApp 🌸</span>
               <ExternalLink className="w-4 h-4 ml-1" />
-            </button>
+            </a>
 
-            {/* Backup Action Button: Copy Order Details */}
-            <button
-              onClick={handleCopyDetails}
-              id="copy-order-backup-btn"
-              className="w-full py-3 px-6 bg-white hover:bg-[#FCE8ED] text-[#5B3A29] border border-[#F7C8D8] font-semibold text-xs rounded-full transition-colors flex items-center justify-center gap-2"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4 text-[#25D366]" />
-                  <span className="text-[#25D366]">Order Details Copied to Clipboard ✓</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4" />
-                  <span>Copy Order Details (Backup)</span>
-                </>
-              )}
-            </button>
+            {/* Required Backup Buttons: Copy Order Details & Back to Cart */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <button
+                type="button"
+                onClick={handleCopyDetails}
+                id="copy-order-backup-btn"
+                className="w-full py-3 px-4 bg-white hover:bg-[#FFF7EE] text-[#5B3A29] border border-[#F7C8D8] font-semibold text-xs rounded-full transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4 text-[#25D366]" />
+                    <span className="text-[#25D366] font-semibold">Order Details Copied! ✓</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4" />
+                    <span>Copy Order Details</span>
+                  </>
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleBackToCart}
+                id="back-to-cart-btn"
+                className="w-full py-3 px-4 bg-[#FFF7EE] hover:bg-[#FCE8ED] text-[#5B3A29] border border-[#F7C8D8] font-semibold text-xs rounded-full transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Back to Cart</span>
+              </button>
+            </div>
+
+            {/* Desktop WhatsApp Web Alternative */}
+            <div className="text-center pt-1">
+              <a
+                href={whatsappWebUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  setHasClickedWhatsApp(true);
+                  handleCopyDetails();
+                }}
+                id="open-whatsapp-web-btn"
+                className="inline-flex items-center gap-1.5 text-xs text-[#5B3A29]/80 hover:text-[#2B1B17] font-medium underline underline-offset-2"
+              >
+                <span>Desktop user? Open directly in WhatsApp Web</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
           </div>
 
           {/* Post-click reassuring note */}
           {hasClickedWhatsApp && (
-            <div className="p-3 bg-[#E8E1E1]/40 rounded-xl text-center text-xs text-[#5B3A29]">
-              ✨ Opened WhatsApp in a new tab! Simply press <strong>Send</strong> in WhatsApp chat to confirm with our barista team.
+            <div className="p-3.5 bg-[#E8E1E1]/40 border border-[#F7C8D8]/50 rounded-2xl text-center text-xs text-[#5B3A29] space-y-1">
+              <p className="font-semibold text-[#2B1B17]">
+                ✨ WhatsApp has opened with your order pre-filled!
+              </p>
+              <p className="text-[11px] text-[#5B3A29]/80">
+                Simply press <strong>Send</strong> in WhatsApp to submit it to our barista team. Your order details were also copied to your clipboard.
+              </p>
             </div>
           )}
         </div>

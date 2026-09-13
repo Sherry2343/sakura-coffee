@@ -21,6 +21,7 @@ interface CartContextType {
   closeReviewModal: () => void;
   generateWhatsAppMessage: () => string;
   getWhatsAppUrl: () => string;
+  getWhatsAppWebUrl: () => string;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -128,50 +129,59 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const closeReviewModal = () => setIsReviewModalOpen(false);
 
   const generateWhatsAppMessage = (): string => {
-    const orderLines = cartItems
-      .map(
-        ci =>
-          `• ${ci.item.name} x ${ci.quantity} — Rs. ${ci.item.price * ci.quantity}`
-      )
-      .join('\n');
-
-    const typeLabel = customerDetails.orderType === 'delivery' ? 'Delivery' : 'Pickup';
-    const addressLine =
+    const customerName = customerDetails.name.trim() || 'Valued Guest';
+    const customerPhone = customerDetails.phone.trim() || 'Not provided';
+    const orderType = customerDetails.orderType === 'delivery' ? 'Delivery' : 'Store Pickup';
+    const address =
       customerDetails.orderType === 'delivery'
-        ? customerDetails.address || 'Address pending confirmation'
+        ? customerDetails.address.trim() || 'Address to be confirmed'
         : 'Store Pickup (Lahore)';
+    const notes = customerDetails.notes.trim();
 
-    const notesText = customerDetails.notes.trim()
-      ? customerDetails.notes.trim()
-      : 'None';
-
-    return `Hello Sakura Coffee! 🌸
+    const orderMessage = `
+Hello Sakura Coffee! 🌸
 
 I would like to place an order.
 
-Customer Name: ${customerDetails.name || 'Valued Guest'}
-Phone Number: ${customerDetails.phone || 'Not provided'}
-Order Type: ${typeLabel}
-Delivery Address: ${addressLine}
+Customer Name: ${customerName}
+Phone Number: ${customerPhone}
+Order Type: ${orderType}
+Delivery Address: ${address}
 
 Order Details:
-${orderLines}
+${cartItems
+  .map(
+    item =>
+      `${item.item.name} x ${item.quantity} — Rs. ${
+        item.item.price * item.quantity
+      }`
+  )
+  .join('\n')}
 
 Subtotal: Rs. ${subtotal}
 
 Order Notes:
-${notesText}
+${notes || 'None'}
 
 Please confirm my order and let me know the estimated preparation or delivery time.
 
-Thank you! 🌸`;
+Thank you! 🌸
+`;
+
+    return orderMessage.trim();
   };
 
   const getWhatsAppUrl = (): string => {
-    const rawMessage = generateWhatsAppMessage();
-    // The target WhatsApp link is https://wa.me/message/ZL5DMNO5IYP4C1
-    // We can append ?text=URL_ENCODED_MESSAGE
-    return `${BRAND_INFO.whatsappUrl}?text=${encodeURIComponent(rawMessage)}`;
+    const whatsappNumber = '923375377778';
+    const orderMessage = generateWhatsAppMessage();
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderMessage)}`;
+    return whatsappUrl;
+  };
+
+  const getWhatsAppWebUrl = (): string => {
+    const whatsappNumber = '923375377778';
+    const orderMessage = generateWhatsAppMessage();
+    return `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(orderMessage)}`;
   };
 
   return (
@@ -195,6 +205,7 @@ Thank you! 🌸`;
         closeReviewModal,
         generateWhatsAppMessage,
         getWhatsAppUrl,
+        getWhatsAppWebUrl,
       }}
     >
       {children}
