@@ -1,0 +1,6 @@
+{
+  "name": "Sakura Coffee",
+  "description": "Discover Sakura Coffee, a Japanese-inspired specialty coffee brand in Lahore serving handcrafted coffee, matcha, sandwiches, and refreshing drinks. Order through our website and confirm through WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

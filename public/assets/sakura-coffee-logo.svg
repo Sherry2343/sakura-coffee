@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&amp;family=Caveat:wght@600&amp;family=Noto+Serif+JP:wght@500&amp;display=swap');
+      .brand-title {
+        font-family: 'Playfair Display', 'Cormorant Garamond', 'Didot', serif;
+        font-weight: 800;
+        font-size: 64px;
+        letter-spacing: 0.16em;
+        fill: #442621;
+      }
+      .brand-sub {
+        font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+        font-weight: 700;
+        font-size: 28px;
+        letter-spacing: 0.32em;
+        fill: #442621;
+      }
+      .brand-script {
+        font-family: 'Caveat', 'Brush Script MT', cursive, sans-serif;
+        font-size: 34px;
+        font-weight: 600;
+        fill: #5A392F;
+        letter-spacing: 0.04em;
+      }
+      .brand-jp {
+        font-family: 'Noto Serif JP', 'Yu Mincho', serif;
+        font-size: 21px;
+        font-weight: 500;
+        letter-spacing: 0.38em;
+        fill: #E58686;
+      }
+    </style>
+    
+    <!-- 5-Petal Sakura Flower Template -->
+    <g id="sakura-flower">
+      <!-- 5 petals with subtle center notch -->
+      <path d="M 0,-6 C -9,-14 -16,-28 0,-40 C 16,-28 9,-14 0,-6 Z" fill="#F8ADC0" stroke="#F19BB1" stroke-width="1"/>
+      <path d="M 0,-6 C -9,-14 -16,-28 0,-40 C 16,-28 9,-14 0,-6 Z" transform="rotate(72)" fill="#F9B6C7" stroke="#F19BB1" stroke-width="1"/>
+      <path d="M 0,-6 C -9,-14 -16,-28 0,-40 C 16,-28 9,-14 0,-6 Z" transform="rotate(144)" fill="#F8ADC0" stroke="#F19BB1" stroke-width="1"/>
+      <path d="M 0,-6 C -9,-14 -16,-28 0,-40 C 16,-28 9,-14 0,-6 Z" transform="rotate(216)" fill="#FABFD0" stroke="#F19BB1" stroke-width="1"/>
+      <path d="M 0,-6 C -9,-14 -16,-28 0,-40 C 16,-28 9,-14 0,-6 Z" transform="rotate(288)" fill="#F9B6C7" stroke="#F19BB1" stroke-width="1"/>
+      <!-- Pistil/stamens center -->
+      <circle cx="0" cy="-6" r="4.5" fill="#FFFFFF" opacity="0.9"/>
+      <circle cx="0" cy="-6" r="2.5" fill="#E87A93"/>
+      <!-- tiny stamen dots -->
+      <line x1="0" y1="-6" x2="-6" y2="-12" stroke="#E87A93" stroke-width="1.2"/>
+      <circle cx="-6" cy="-12" r="1.2" fill="#E87A93"/>
+      <line x1="0" y1="-6" x2="6" y2="-12" stroke="#E87A93" stroke-width="1.2"/>
+      <circle cx="6" cy="-12" r="1.2" fill="#E87A93"/>
+      <line x1="0" y1="-6" x2="0" y2="-15" stroke="#E87A93" stroke-width="1.2"/>
+      <circle cx="0" cy="-15" r="1.2" fill="#E87A93"/>
+      <line x1="0" y1="-6" x2="-8" y2="-5" stroke="#E87A93" stroke-width="1.2"/>
+      <circle cx="-8" cy="-5" r="1.2" fill="#E87A93"/>
+      <line x1="0" y1="-6" x2="8" y2="-5" stroke="#E87A93" stroke-width="1.2"/>
+      <circle cx="8" cy="-5" r="1.2" fill="#E87A93"/>
+    </g>
+
+    <!-- Falling Petal -->
+    <g id="single-petal">
+      <path d="M 0,0 C -6,6 -9,16 -3,22 C 3,28 12,26 14,20 C 16,13 8,6 0,0 Z" fill="#F8AFC2" opacity="0.9"/>
+    </g>
+  </defs>
+
+  <!-- Circular Badge Background -->
+  <circle cx="300" cy="300" r="285" fill="#FFF2EB" />
+  
+  <!-- Outer delicate background glow/tint -->
+  <circle cx="300" cy="300" r="285" fill="none" stroke="#FCE2DD" stroke-width="2" />
+
+  <!-- Inner Illustration Circular Border Ring (open at bottom) -->
+  <path d="M 140,290 A 180,180 0 1,1 460,290" fill="none" stroke="#442621" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- ================= MOUNT FUJI ================= -->
+  <g transform="translate(130, 160)">
+    <!-- Fuji Mountain Body (soft blush rose) -->
+    <path d="M 20,110 L 75,10 Q 95,5 115,10 L 170,110 Z" fill="#E8C7CD" stroke="#442621" stroke-width="3.2" stroke-linejoin="round"/>
+    
+    <!-- Fuji Snow Cap (crisp white with stylized 3 notches) -->
+    <path d="M 60,37 L 75,10 Q 95,5 115,10 L 130,37 Q 120,48 110,40 Q 95,54 80,42 Q 70,50 60,37 Z" fill="#FFFFFF" stroke="#442621" stroke-width="3.2" stroke-linejoin="round"/>
+  </g>
+
+  <!-- ================= SAKURA BRANCH & FLOWERS ================= -->
+  <!-- Delicate dark brown branch -->
+  <path d="M 330,220 Q 360,190 390,140 Q 420,100 440,80" fill="none" stroke="#442621" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 380,155 Q 365,130 350,120" fill="none" stroke="#442621" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 405,120 Q 435,130 455,145" fill="none" stroke="#442621" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 425,95 Q 405,80 390,75" fill="none" stroke="#442621" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Cherry blossoms in upper right cluster -->
+  <use href="#sakura-flower" transform="translate(390, 105) scale(1.15) rotate(15)"/>
+  <use href="#sakura-flower" transform="translate(435, 140) scale(0.95) rotate(-35)"/>
+  <use href="#sakura-flower" transform="translate(435, 75) scale(0.85) rotate(45)"/>
+  <use href="#sakura-flower" transform="translate(355, 115) scale(0.7) rotate(-10)"/>
+  
+  <!-- Small buds & leaves -->
+  <circle cx="455" cy="148" r="4.5" fill="#F8ADC0" stroke="#442621" stroke-width="1.5"/>
+  <circle cx="388" cy="74" r="4" fill="#F8ADC0" stroke="#442621" stroke-width="1.5"/>
+  <circle cx="445" cy="65" r="3.5" fill="#F8ADC0" stroke="#442621" stroke-width="1.5"/>
+
+  <!-- Left side cherry blossoms (near cup base) -->
+  <use href="#sakura-flower" transform="translate(165, 260) scale(0.9) rotate(20)"/>
+  <use href="#sakura-flower" transform="translate(205, 290) scale(0.8) rotate(-40)"/>
+  
+  <!-- Right side cherry blossom (near cup handle base) -->
+  <use href="#sakura-flower" transform="translate(435, 295) scale(0.75) rotate(30)"/>
+
+  <!-- Floating petals drifting around -->
+  <use href="#single-petal" transform="translate(470, 190) scale(0.85) rotate(25)"/>
+  <use href="#single-petal" transform="translate(490, 230) scale(0.9) rotate(70)"/>
+  <use href="#single-petal" transform="translate(430, 260) scale(0.75) rotate(-20)"/>
+  <use href="#single-petal" transform="translate(140, 295) scale(0.8) rotate(45)"/>
+  <use href="#single-petal" transform="translate(130, 230) scale(0.7) rotate(-30)"/>
+  <use href="#single-petal" transform="translate(540, 270) scale(0.8) rotate(15)"/>
+  <use href="#single-petal" transform="translate(495, 335) scale(0.75) rotate(85)"/>
+  <use href="#single-petal" transform="translate(565, 370) scale(0.7) rotate(-10)"/>
+
+  <!-- ================= COFFEE CUP ================= -->
+  <!-- Elegant rising steam -->
+  <path d="M 300,185 Q 285,150 305,120 Q 325,90 300,60" fill="none" stroke="#442621" stroke-width="3.8" stroke-linecap="round"/>
+
+  <!-- Cup Handle (smooth loop on right) -->
+  <path d="M 380,205 C 425,205 425,270 375,270" fill="none" stroke="#442621" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- Cup Body (ceramic white with smooth rounded base) -->
+  <path d="M 215,190 C 220,285 245,315 300,315 C 355,315 380,285 385,190 Z" fill="#FFFFFF" stroke="#442621" stroke-width="4.5" stroke-linejoin="round"/>
+
+  <!-- Cup Rim (ellipse) -->
+  <ellipse cx="300" cy="190" rx="85" ry="17" fill="#FFFFFF" stroke="#442621" stroke-width="4.5"/>
+
+  <!-- Coffee Surface & Crema inside cup -->
+  <ellipse cx="300" cy="190" rx="78" ry="13" fill="#43221B"/>
+  <!-- Gentle coffee crema swirl -->
+  <ellipse cx="305" cy="191" rx="55" ry="7" fill="#5A332B" opacity="0.6"/>
+  <path d="M 260,190 Q 300,194 340,190" stroke="#7A4B3F" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Sakura Flower on Cup Front -->
+  <use href="#sakura-flower" transform="translate(300, 260) scale(0.85)"/>
+
+  <!-- ================= TYPOGRAPHY ================= -->
+  <!-- "SAKURA" (Bold luxury serif uppercase) -->
+  <text x="300" y="405" text-anchor="middle" class="brand-title">SAKURA</text>
+
+  <!-- "— COFFEE —" with flanking clean lines -->
+  <line x1="165" y1="446" x2="225" y2="446" stroke="#442621" stroke-width="2" stroke-linecap="round"/>
+  <text x="300" y="454" text-anchor="middle" class="brand-sub">COFFEE</text>
+  <line x1="375" y1="446" x2="435" y2="446" stroke="#442621" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- "Bloom Into Your Day." (Fluid handwritten cursive script) -->
+  <text x="300" y="504" text-anchor="middle" class="brand-script">Bloom Into Your Day.</text>
+
+  <!-- "さくらコーヒー" (Japanese calligraphy in coral rose) -->
+  <text x="303" y="542" text-anchor="middle" class="brand-jp">さくらコーヒー</text>
+</svg>
